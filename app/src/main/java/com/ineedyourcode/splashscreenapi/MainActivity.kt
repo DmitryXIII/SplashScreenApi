@@ -14,18 +14,17 @@ class MainActivity : AppCompatActivity() {
         installSplashScreen().apply {
             setKeepOnScreenCondition { isSplashScreenKeeping }
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                setOnExitAnimationListener { viewProvider ->
-                    viewProvider.iconView.animate()
-                        .scaleX(0f)
-                        .scaleY(0f)
-                        .duration = 200
+            setOnExitAnimationListener { viewProvider ->
+                viewProvider.iconView.animate()
+                    .scaleX(0f)
+                    .scaleY(0f)
+                    .duration = 1000
 
-                    viewProvider.view.animate()
-                        .alpha(0f)
-                        .withEndAction { viewProvider.remove() }
-                        .duration = 200
-                }
+                viewProvider.view.animate()
+                    .alpha(0f)
+                    .rotation(180f)
+                    .withEndAction { viewProvider.remove() }
+                    .duration = 1000
             }
         }
 
